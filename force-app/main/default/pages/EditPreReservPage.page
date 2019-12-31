@@ -1,0 +1,22 @@
+<apex:page controller="EditPrereservPageController">
+    <apex:form id="EditPreReserv">
+        <apex:pageBlock title="Edit PreReserv">
+            <apex:pageMessages id="showmsg"></apex:pageMessages>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!prereserv.Hotel__c}" />                 
+                <apex:inputField value="{!prereserv.Room__c}"/>
+                <apex:inputField value="{!prereserv.ChekinDate__c}"/>
+                <apex:inputField value="{!prereserv.ChekoutDate__c}" />
+                <apex:inputField value="{!prereserv.Count__c}" />
+                <apex:inputField value="{!prereserv.Email__c}" />
+                <apex:inputField value="{!prereservroom.Alcohol__c}" />
+                <apex:inputField value="{!prereservroom.Internet__c}" />
+                <apex:inputField value="{!prereservroom.Sauna__c}" />               
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Edit" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

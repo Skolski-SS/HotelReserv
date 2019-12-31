@@ -1,0 +1,88 @@
+<apex:page id="RoomList" controller="MainPageListController">
+    
+    <apex:sectionHeader title="City" subtitle="All Cities"/>
+    <apex:form >
+        <apex:pageBlock title="List Cities">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!Cities}" var="city">
+                    <apex:column headerValue="Cities">
+                        <apex:commandLink action="{!retrieveHotels}" value="{!City.Name}" reRender="HotelsList">
+                            <apex:param name="CityParam" value="{!city.id}" assignTo="{!CityId}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column headerValue="Description">
+                        <apex:outputText value="{!City.Name}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    
+    <apex:form >
+        <apex:pageBlock title="Hotels">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!Hotels}" var="hotel" id="HotelsList">
+                    <apex:column headerValue="Hotels">
+                        <apex:commandLink action="{!retrieveRooms}" value="{!hotel.Name}" reRender="">
+                            <apex:param name="HotelParam" value="{!hotel.id}" assignTo="{!hotelId}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column headerValue="Description">
+                        <apex:outputText value="{!hotel.Name}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+        <apex:pageBlock title="List Hotel Rooms">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!Rooms}" var="room" id="RoomList">
+                    <apex:column headerValue="Number">
+                        <apex:outputText value="{!room.Name}"/>
+                    </apex:column>
+                    <apex:column headerValue="Kind">
+                        <apex:outputText value="{!room.KindOfRoom__c}"/>
+                    </apex:column>
+                    <apex:column headerValue="Amount">
+                        <apex:outputText value="{!room.Amount__c}"/>
+                    </apex:column>
+                    <apex:column headerValue="PreServation">
+                        <apex:inputCheckbox value="{!room.IsBooked__c}" disabled="true"/>
+                    </apex:column>
+                    <apex:column headerValue="Reservation">
+                        <apex:inputCheckbox value="{!room.IsBusy__c}" disabled="true"/>
+                    </apex:column>
+                    <apex:column headerValue="Internet">
+                        <apex:inputCheckbox value="{!room.Internet__c}" disabled="true" />
+                    </apex:column>
+                       <apex:column headerValue="Alcohol"> 
+                        <apex:inputCheckbox value="{!room.Alcohol__c}" disabled="true"/>
+                    </apex:column> 
+                           <apex:column headerValue="Sauna">
+                        <apex:inputCheckbox value="{!room.Sauna__c}" disabled="true"/>
+                    </apex:column>
+                    <apex:column headerValue="Reserv/Del/PreReserv">
+                        <apex:outputLink value="/apex/AddReservPage"  
+                                         styleClass="slds-m-top_xx-small slds-button slds-button_neutral btn">
+                            Reserv
+                            <apex:param name="reservroom" value="{!room.id}"/> 
+                        </apex:outputLink>
+                        <apex:commandLink value="Delete" action="{!deleteReserv}"
+                                          styleClass="slds-m-top_xx-small slds-button slds-button_neutral btn" >
+                            <apex:param name="rid" value="{!room.id}" assignTo="{!rid}"/> 
+                        </apex:commandLink>
+                        <apex:outputLink value="/apex/AddPreReservPage"  
+                                         styleClass="slds-m-top_xx-small slds-button slds-button_neutral btn">
+                            PreReserv
+                            <apex:param name="prereservroom" value="{!room.id}"/> 
+                        </apex:outputLink>
+                    </apex:column>
+                    
+                </apex:pageBlockTable>
+            </apex:pageBlockSection> 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

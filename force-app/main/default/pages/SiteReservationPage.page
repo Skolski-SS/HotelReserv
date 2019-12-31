@@ -1,0 +1,66 @@
+<apex:page controller="SitePreReservationPageController"   docType="html-5.0">
+    
+    <apex:form id="addHotel">
+        
+        <apex:pageBlock >
+            <h2 style="color:rgb(106, 90, 205);">Reserv Hotel</h2>
+            <apex:pageBlockSection columns="1">
+                <apex:pageMessages id="showmsg"></apex:pageMessages>
+                <apex:actionFunction action="{!selectHotel}" name="Select" reRender="addHotel">
+                    <apex:param name="firstParam" assignTo="{!selectCity}" value=""/>
+                </apex:actionFunction>
+                <apex:outputPanel layout="inline">
+                    <apex:outputLabel value="Select City" style="padding-right:20px" >
+                    </apex:outputLabel> 
+                    <apex:selectList size="1" multiselect="false" onchange="Select(this.value);" value="{!reserv.City__c}">
+                        <apex:selectOptions value="{!City_List}"/>
+                    </apex:selectList>
+                </apex:outputPanel>                
+                <apex:outputPanel >
+                    <apex:outputLabel value="Select Hotel" style="padding-right:20px" >
+                        
+                    </apex:outputLabel>                         <apex:selectList size="1" multiselect="false" rendered="{!City_List.size > 0}" value="{!reserv.Hotel__c}">
+                    <apex:selectOptions value="{!Hotel_List}"/>
+                    </apex:selectList>                   
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!flag}">
+                    <span style="color:red;">No Hotel</span>
+                </apex:outputPanel>
+                <apex:outputPanel >                    
+                    <apex:outputLabel value="Number of Guest" style="padding-right:20px"/>
+                    <apex:input value="{!cnt}" type="number"/>                    
+                </apex:outputPanel>
+                <apex:outputPanel >
+                    <apex:outputLabel value="From" style="padding-right:20px" />
+                    <apex:inputField value="{!reserv.ChekinDate__c}"/>
+                </apex:outputPanel>                
+                <apex:outputPanel >                    
+                    <apex:outputLabel value="To" style="padding-right:20px"/>
+                    <apex:inputField value="{!reserv.ChekoutDate__c}"/>
+                </apex:outputPanel> 
+                <apex:outputPanel >                    
+                    <apex:outputLabel value="Contact Email" style="padding-right:20px">                       
+                    </apex:outputLabel>  
+                    <apex:inputField value="{!reserv.Email__c}"/>                 
+                </apex:outputPanel>  
+                 <apex:outputPanel >                    
+                     <apex:outputLabel value="Alcohol" style="padding-right:5px"/>                         
+                    <apex:inputField value="{!roomserv.Alcohol__c}"/>  
+                     <apex:outputLabel value="Internet" style="padding-right:5px"/>                         
+                    <apex:inputField value="{!roomserv.Internet__c}"/>
+                     <apex:outputLabel value="Sauna" style="padding-right:5px"/>                         
+                    <apex:inputField value="{!roomserv.Sauna__c}"/>
+                </apex:outputPanel> 
+                
+                
+                
+            </apex:pageBlockSection>            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Reserv room" action="{!save}" styleClass="Btn"/>
+                <apex:commandButton value="Cancel" action="{!Cancel}"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

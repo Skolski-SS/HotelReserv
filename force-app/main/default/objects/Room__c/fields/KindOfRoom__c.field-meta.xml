@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KindOfRoom__c</fullName>
+    <externalId>false</externalId>
+    <label>KindOfRoom</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>single room</fullName>
+                <default>false</default>
+                <label>single room</label>
+            </value>
+            <value>
+                <fullName>double room</fullName>
+                <default>false</default>
+                <label>double room</label>
+            </value>
+            <value>
+                <fullName>triple room</fullName>
+                <default>false</default>
+                <label>triple room</label>
+            </value>
+            <value>
+                <fullName>quadruple room</fullName>
+                <default>false</default>
+                <label>quadruple room</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

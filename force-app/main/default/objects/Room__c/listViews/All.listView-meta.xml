@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Hotel__c</columns>
+    <columns>NAME</columns>
+    <columns>Amount__c</columns>
+    <columns>Alcohol__c</columns>
+    <columns>Internet__c</columns>
+    <columns>Sauna__c</columns>
+    <columns>KindOfRoom__c</columns>
+    <columns>IsBooked__c</columns>
+    <columns>IsBusy__c</columns>
+    <columns>City__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

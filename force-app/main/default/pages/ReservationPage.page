@@ -1,0 +1,39 @@
+<apex:page controller="ReservationPageController">
+    <apex:form >
+        <apex:pageBlock title="List Reservation Rooms">
+            <apex:pageBlockTable value="{!reservs}" var="reserv" id="ReservList">
+                
+                <apex:column headerValue="City">
+                    <apex:outputField value="{!reserv.City__c}"/>
+                </apex:column>
+                <apex:column headerValue="Hotel">
+                    <apex:outputField value="{!reserv.Hotel__c}"/>
+                </apex:column>
+                <apex:column headerValue="Room">
+                    <apex:outputField value="{!reserv.Room__c}"/>
+                </apex:column>
+                <apex:column headerValue="ChekinDate">
+                    <apex:outputField value="{!reserv.ArrivalDate__c}"/>
+                </apex:column>
+                <apex:column headerValue="ChekoutDate">
+                    <apex:outputField value="{!reserv.DepartureDate__c}"/>
+                </apex:column>
+                <apex:column headerValue="Count">
+                    <apex:outputField value="{!reserv.NumberOfGuest__c}" />
+                </apex:column>
+                <apex:column headerValue="Email">
+                    <apex:outputField value="{!reserv.ContactEmail__c}"/>
+                </apex:column>
+                <apex:column headerValue="Edit">
+                    
+                    <apex:outputLink value="/apex/EditReservPage"  
+                                     styleClass="slds-m-top_xx-small slds-button slds-button_neutral btn">
+                        Edit
+                        <apex:param name="reservroom" value="{!reserv.id}" assignTo="{!rid}"/> 
+                    </apex:outputLink>
+                </apex:column>
+            </apex:pageBlockTable>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
